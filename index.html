@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hit Formula.fm</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="scroll-container">
+    <!-- Hero Section -->
+    <section class="scroll-section hero" id="hero">
+      <svg id="parallax-bg"></svg>
+      <div class="hero-content">
+        <h1>Looking for a hit?</h1>
+        <p>Discover what makes songs rise to the top.</p>
+        <button class="cta-button" id="scroll-btn">Explore the formula</button>
+      </div>
+    </section>
+
+    <!-- Contextual Intro -->
+    <section class="scroll-section" id="section-1">
+      <h2>🎶 The Soundtrack of Our Lives?</h2>
+      <p>
+        This explorable explanation investigates the acoustic DNA of popular songs. We compare
+        tracks across popularity, danceability, energy, and more — all with a focus on
+        understanding how audio features drive chart performance.
+      </p>
+      <div style="display: flex; align-items: flex-start; width: 100%;">
+
+        <!-- Chart container: 70% -->
+        <div id="chart-container" style="flex: 7;">
+          <button id="pause-btn" style="margin-top: 10px;">Pause</button>
+          <svg id="rise-hit-chart" width="1200" height="600"></svg>
+        </div>
+      </div>
+      
+      
+    </section>
+
+    <!-- Graph 1: Feature vs Popularity -->
+    <section class="scroll-section">
+      <h2>📈 Song Feature vs Popularity</h2>
+      <label for="featureSelect">Choose feature:&nbsp;</label>
+      <select id="featureSelect">
+        <option value="danceability">Danceability</option>
+        <option value="energy">Energy</option>
+        <option value="valence">Valence</option>
+        <option value="acousticness">Acousticness</option>
+        <option value="speechiness">Speechiness</option>
+      </select>
+      <div id="chart"></div>
+      <div id="tooltip"></div>
+    </section>
+
+    <!-- Graph 2: Compare Two Songs -->
+    <section class="scroll-section">
+      <h2>🎧 Compare Two Songs</h2>
+      <p>Select 2 songs to compare audio features!</p>
+      <label for="song1">Song 1:</label>
+      <input id="song1" type="text" placeholder="Enter first song name" />
+      <label for="song2">Song 2:</label>
+      <input id="song2" type="text" placeholder="Enter second song name" />
+      <button id="compareBtn">Compare</button>
+      <div id="compareChart"></div>
+    </section>
+
+
+    <!-- Graph 3: Billboard vs. Non-Billboard Violin Plot -->
+<section class="scroll-section" id="violin-section">
+  <h2>🎻 What Makes a Hit... or Not?</h2>
+  <p>Do hit songs have a distinct audio fingerprint? Or do non-hits sound surprisingly similar?</p>
+  <label for="violinFeatureSelect">Select a feature to compare:</label>
+  <select id="violinFeatureSelect">
+    <option value="danceability">Danceability</option>
+    <option value="energy">Energy</option>
+    <option value="valence">Valence</option>
+    <option value="acousticness">Acousticness</option>
+    <option value="speechiness">Speechiness</option>
+  </select>
+  <div id="violinPlot"></div>
+  <div id="violin-tooltip" style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0,0,0,0.8); color: white; padding: 6px 8px; border-radius: 4px; font-size: 12px;"></div>
+</section>
+
+    <!-- Placeholder for future sections -->
+    <section class="scroll-section">
+      <h2>📊 Who Ruled the Charts?</h2>
+      <p>Watch the top 10 artists by chart presence from 1954 onward.</p>
+      <div class="viz-placeholder">[Visualization: Bar Chart Race]</div>
+    </section>
+
+    <section class="scroll-section">
+      <h2>🎛 Your Hit Formula</h2>
+      <p>Tune your taste. Explore your hit profile.</p>
+      <div class="viz-placeholder">[Visualization: Interactive Quiz]</div>
+    </section>
+
+
+    <section class="scroll-section" id="mood-selector">
+  <h2>🎯 Pick Your Mood</h2>
+  <p>Select a vibe to discover tracks tailored to that energy.</p>
+  <div class="mood-buttons">
+    <button data-mood="chill">😌 Chill Vibes</button>
+    <button data-mood="party">🕺 Party Mode</button>
+    <button data-mood="heartbreak">💔 Heartbreak</button>
+    <button data-mood="focus">🧠 Deep Focus</button>
+    <button data-mood="mainchar">😎 Main Character Energy</button>
+  </div>
+</section>
+
+<section class="scroll-section" id="track-swipe-section" style="display:none;">
+  <h2>🎶 Swipe Through Tracks</h2>
+  <div id="track-card" class="track-card"></div>
+  <div class="swipe-buttons">
+    <button id="dislikeBtn">❌</button>
+    <button id="likeBtn">❤️</button>
+  </div>
+</section>
+
+<section class="scroll-section" id="results-section" style="display:none;">
+  <h2>📊 Your Hit Formula</h2>
+  <div id="radar-chart"></div>
+  <p id="badge-name"></p>
+  <h3>Recommended for You</h3>
+  <ul id="recommendations"></ul>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="scroll-section footer">
+      <p>© HitFormula.fm • Inspired by Deezer, Spotify & Billboard</p>
+    </footer>
+  </div>
+
+  <!-- D3 + logic -->
+  <script src="main.js"></script>
+  <script src="viz1.js"></script>
+  <script src="violin.js"></script>
+  <script src="tinder.js"></script>
+  <script src="radar.js"></script> 
+
+</body>
+</html>
